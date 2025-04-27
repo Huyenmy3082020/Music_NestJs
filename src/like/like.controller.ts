@@ -1,10 +1,11 @@
 import { Body, Controller, Get, Post, Req, UseGuards } from '@nestjs/common';
-import { LikeService } from './like.service';
-import { AuthGuard } from 'src/auth/auth.guard';
 import { LikeCreateDto } from './dto/create_likedto';
+import { AuthGuard } from 'src/auth/auth.guard';
+import { LikeService } from './like.service';
+
 @Controller('like')
 export class LikeController {
-    constructor(   private readonly likeService: LikeService,) { 
+        constructor(   private readonly likeService: LikeService,) { 
         
     } 
 

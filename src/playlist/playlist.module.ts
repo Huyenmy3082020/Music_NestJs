@@ -10,7 +10,8 @@ import { PlaylistsongModule } from 'src/playlistsong/playlistsong.module';
 @Module({
   imports: [
     TypeOrmModule.forFeature([Playlist]),
-   
+    forwardRef(() => UserModule),
+    forwardRef(() => AuthModule),   
   ],
   controllers: [PlaylistController],
   providers: [PlaylistService],

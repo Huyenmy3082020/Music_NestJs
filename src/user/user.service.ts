@@ -1,12 +1,14 @@
-import { Injectable } from '@nestjs/common';
+import { forwardRef, Inject, Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { User } from './entities/user.entity';
 import { Repository, UpdateResult } from 'typeorm';
 import { UpdateUserDto } from './dto/updateDTO';
+import { LikeService } from 'src/like/like.service';
 
 @Injectable()
 export class UserService {
-  constructor(@InjectRepository(User) private userRepository: Repository<User>) { }
+  constructor(@InjectRepository(User) private userRepository: Repository<User>,
+   @Inject(forwardRef(() => LikeService)) private likeService: LikeService,) { }
 
   async findAll(): Promise<User[]> {
     return await this.userRepository.find();
@@ -41,4 +43,3 @@ export class UserService {
     await this.userRepository.delete(id);
   }
 }
-module.exports = UserService;

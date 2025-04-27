@@ -14,6 +14,7 @@ import { UserModule } from 'src/user/user.module'; // Nhập khẩu UserModule
       secret: process.env.ACCESSTOKEN_KEY_SECERT || '123456',
       signOptions: { expiresIn: '60d' },
     }),
+    forwardRef(() => UserModule)
   ],
   controllers: [AuthController],
   providers: [AuthService],

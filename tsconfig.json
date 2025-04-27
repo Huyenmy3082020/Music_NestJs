@@ -15,8 +15,11 @@
     "strictNullChecks": true,
     "forceConsistentCasingInFileNames": true,
     "noImplicitAny": false,
-    
     "strictBindCallApply": false,
     "noFallthroughCasesInSwitch": false
-  }
+  },
+  "include": [
+    "src/**/*",
+    "dist/**/*"  // Thêm dòng này để bao gồm các tệp trong thư mục dist
+  ]
 }

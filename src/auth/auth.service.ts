@@ -13,8 +13,7 @@ export class AuthService {
 
     constructor(@InjectRepository(User) private userRepository: Repository<User>,private jwtService: JwtService) { }
     
-    
-    
+
    async registerUser(RegisterUserDto: RegisterUserDto): Promise<User> {
         return await this.userRepository.save(RegisterUserDto);
     }

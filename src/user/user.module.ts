@@ -3,17 +3,17 @@ import { UserService } from './user.service';
 import { UserController } from './user.controller';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { User } from './entities/user.entity';
-import { AuthModule } from 'src/auth/auth.module'; // Nhập khẩu forwardRef module
+import { LikeModule } from 'src/like/like.module';
+import { AuthModule } from 'src/auth/auth.module';
 
 @Module({
   imports: [
     TypeOrmModule.forFeature([User]),
+    forwardRef(() => AuthModule),
+    forwardRef(() => LikeModule),
   ],
-  providers: [UserService],
   controllers: [UserController],
-  exports: [
-    UserService,
-    TypeOrmModule,
-  ],
+  providers: [UserService],
+  exports: [UserService, TypeOrmModule],
 })
 export class UserModule {}

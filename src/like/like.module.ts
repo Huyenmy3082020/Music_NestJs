@@ -1,15 +1,20 @@
 import { forwardRef, Module } from '@nestjs/common';
+import { TypeOrmModule } from '@nestjs/typeorm';
 import { LikeController } from './like.controller';
 import { LikeService } from './like.service';
-import { TypeOrmModule } from '@nestjs/typeorm';
 import { Like } from './entities/like.entity';
-import { AuthModule } from 'src/auth/auth.module';
+import { UserModule } from 'src/user/user.module';
+import { SongsModule } from 'src/songs/songs.module';
+import { AuthModule } from 'src/auth/auth.module';  // Nhập khẩu AuthModule
 
 @Module({
   imports: [
-      TypeOrmModule.forFeature([Like]),
-    ],
+    TypeOrmModule.forFeature([Like]),
+    forwardRef(() => UserModule),
+    forwardRef(() => AuthModule),
+  ],
   controllers: [LikeController],
-  providers: [LikeService]
+  providers: [LikeService],
+  exports: [LikeService],
 })
 export class LikeModule {}

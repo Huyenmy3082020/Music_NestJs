@@ -1,5 +1,6 @@
 import { Genre } from 'src/genre/entities/genry.entity';
-import { Entity, Column, PrimaryGeneratedColumn, ManyToOne, JoinColumn, CreateDateColumn, UpdateDateColumn } from 'typeorm';
+import { History } from 'src/history/entities/history.entity'; // <- thêm cái này
+import { Entity, Column, PrimaryGeneratedColumn, ManyToOne, JoinColumn, CreateDateColumn, UpdateDateColumn, OneToMany } from 'typeorm';
 
 @Entity()
 export class Song {
@@ -16,21 +17,25 @@ export class Song {
   album: string;
 
   @Column({ nullable: true })
-  imageUrl: string; 
+  imageUrl: string;
 
   @ManyToOne(() => Genre, { nullable: true })
   @JoinColumn({ name: 'genre_id' })
   genre: Genre;
 
   @Column('int')
-  duration: number; 
+  duration: number;
 
   @Column()
-  fileUrl: string; 
+  fileUrl: string;
 
   @CreateDateColumn()
   createAt: Date;
 
   @UpdateDateColumn()
   updateAt: Date;
+
+  // 👇 Thêm dòng này để nối với History
+  @OneToMany(() => History, (history) => history.song)
+  histories: History[];
 }

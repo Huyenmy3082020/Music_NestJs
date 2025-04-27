@@ -1,5 +1,6 @@
 
 // import { Like } from 'src/like/entities/like.entity';
+import { History } from 'src/history/entities/history.entity';
 import { Like } from 'src/like/entities/like.entity';
 import { Playlist } from 'src/playlist/entities/playlist.entity';
 import { Subscription } from 'src/subscriptions/entities/subscription.entity';
@@ -48,8 +49,8 @@ export class User {
   @OneToMany(() => Like, like => like.user)
   likes: Like[];
 
-  // @OneToMany(() => History, history => history.user)
-  // histories: History[];
+  @OneToMany(() => History, history => history.user)
+  histories: History[];
 
   @OneToMany(() => Subscription, subscription => subscription.user)
   subscriptions: Subscription[];
