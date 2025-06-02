@@ -8,7 +8,9 @@ import { LikeService } from 'src/like/like.service';
 @Injectable()
 export class UserService {
   constructor(@InjectRepository(User) private userRepository: Repository<User>,
-   @Inject(forwardRef(() => LikeService)) private likeService: LikeService,) { }
+  //  @Inject(forwardRef(() => LikeService)) private likeService: LikeService,
+  )
+    { }
 
   async findAll(): Promise<User[]> {
     return await this.userRepository.find();

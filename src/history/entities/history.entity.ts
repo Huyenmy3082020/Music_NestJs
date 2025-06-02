@@ -8,10 +8,10 @@ export class History {
   id: number;
 
   @Column({ type: 'timestamp', nullable: true })
-  listened_at: Date;
+  listenedAt: Date;
 
   @CreateDateColumn({ type: 'timestamp' })
-  created_at: Date;
+  createdAt: Date;
 
   @ManyToOne(() => Song, (song) => song.histories, { onDelete: 'CASCADE' })
   @JoinColumn({ name: 'songId' })

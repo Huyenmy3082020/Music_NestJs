@@ -1,5 +1,6 @@
 
 // import { Like } from 'src/like/entities/like.entity';
+import { Session } from '../../session/entities/session.entity';
 import { History } from 'src/history/entities/history.entity';
 import { Like } from 'src/like/entities/like.entity';
 import { Playlist } from 'src/playlist/entities/playlist.entity';
@@ -57,5 +58,10 @@ export class User {
 
   @Column({ default: 'user' })
   role: string; // 'user' | 'admin' | 'superadmin'
+
+
+  @OneToMany(() => Session, session => session.user)  
+  sessions: Session[];
+
 
 }

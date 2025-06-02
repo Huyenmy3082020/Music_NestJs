@@ -10,8 +10,8 @@ import { AuthModule } from 'src/auth/auth.module';  // Nhập khẩu AuthModule
 @Module({
   imports: [
     TypeOrmModule.forFeature([Like]),
-    forwardRef(() => UserModule),
-    forwardRef(() => AuthModule),
+    UserModule,
+  AuthModule
   ],
   controllers: [LikeController],
   providers: [LikeService],

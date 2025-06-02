@@ -7,11 +7,11 @@ async function bootstrap() {
 }
 
 dataSource.initialize()
-  .then(() => {
-    console.log("✅ Database connected successfully!");
+.then(() => {
+  console.log("✅ Database connected successfully!");
+  
+  bootstrap();
   })
   .catch((err) => {
     console.error("❌ Failed to connect to the database:", err);
   });
-
-bootstrap();

@@ -8,7 +8,7 @@ import { UserService } from 'src/user/user.service';
 export class LikeService {
     constructor(
         @InjectRepository(Like) private likeRepository: Repository<Like>, // Missing comma fixed
-        @Inject(forwardRef(() => UserService)) private userService: UserService, // Fixed decorator usage
+        // @Inject(forwardRef(() => UserService)) private userService: UserService, // Fixed decorator usage
     ) {}
 
     async createLike(likeCreateDto: any, userId: number) {

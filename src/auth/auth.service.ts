@@ -14,9 +14,11 @@ export class AuthService {
     constructor(@InjectRepository(User) private userRepository: Repository<User>,private jwtService: JwtService) { }
     
 
-   async registerUser(RegisterUserDto: RegisterUserDto): Promise<User> {
-        return await this.userRepository.save(RegisterUserDto);
-    }
+    async registerUser(RegisterUserDto: RegisterUserDto): Promise<User> {
+        const user = this.userRepository.create(RegisterUserDto); 
+        await this.userRepository.save(user);
+        return user; 
+      }
 
    async loginUser(LoginUserDto:LoginUserDto):Promise<any> {
       const user = await this.userRepository.findOne({ where: { email: LoginUserDto.email } });
